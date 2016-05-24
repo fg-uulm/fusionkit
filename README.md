@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #FAQ
 
 ## SensorServer system requirements
-Windows 8 or greater, USB 3.0 port, Ethernet interface, i3 or greater CPU recommended.
+Windows 8 or greater, USB 3.0 port, Ethernet interface, i3 or greater CPU recommended. Kinect SDK v2.0 must be downloaded and installed before running the sensor server.
 
 ## Studio system requirements
 Windows 7 or greater, standalone GPU, CPU ressources depend on the number of cameras connected (i5 should work for a few cameras).
