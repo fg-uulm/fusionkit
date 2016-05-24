@@ -6,16 +6,38 @@ For the time being, only binaries will be provided for download, as licensing is
 #License (for the provided binaries)
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. BINARIES OF THIS SOFTWARE MAY NOT BE REDISTRIBUTED COMMERCIALLY OR NON-COMMERCIALLY, NOR MADE AVAILABLE TO ANY THIRD PARTY THROUGH ANY OTHER MEANS BESIDES DIRECT DOWNLOADS FROM THIS WEB PAGE.
 
+#Contact
+See http://uulm.de/?fusionkit
+
 #FAQ
 
-## SensorServer system requirements
-Windows 8 or greater, USB 3.0 port, Ethernet interface, i3 or greater CPU recommended. Kinect SDK v2.0 must be downloaded and installed before running the sensor server.
+## System requirements
+One Windows 7/8 machine for Studio (providing registration, fusion and skeleton output) with:
+ - A decent CPU (i7 or better is recommended) 
+ - .net Framework (>= 4.5.1)
 
-## Studio system requirements
-Windows 7 or greater, standalone GPU, CPU ressources depend on the number of cameras connected (i5 should work for a few cameras).
+One Windows 8 machine for each Kinect v2 sensor running the SensorServer, with:
+- Suitable hardware for Kinect v2 tracking (i3 or greater, some GB of RAM, USB 3.0)
+- .net Framework (>= 4.5.1)
+- Kinect SDK v2.0
+- Optional: CUDA SDK and supported GPU for accelerated marker tracking
+- Network connections with sufficient throughput between all of the machines (isolated network without other traffic is preferred) and correct network configuration for UPnP/SSDP sensor discovery
+ 
+The current version of the system has been tested with up to 8 sensors
 
 ## How do I get started with this software?
-Please see the getting started guide in the doc folder of the repository. A more detailed documentation will follow soon.
+Please see the getting started guide below. A more detailed documentation will follow soon.
+
+- Start up the StudioSensorServer binary on all sensor machines
+- Start up the Studio binary on the Studio machine
+- Add sensors by:
+  - either using discovered sensors (hit "Refresh" if sensors are missing)
+  - or add sensors manually by providing their IP address (button below sensor list on the left)
+- Tick the checkboxes of all sensors to use them
+- Start Registration Wizard on the Fusion Tab on the right side of the UI
+- Follow the instructions provided by the Registration Wizard until quality is sufficient
+- Switch skeleton display type for 3D view to view fused skeleton output
+- The skeleton output data can also be polled using REST at <ip>:8083/frame
 
 ## I have problems starting the SensorServer or Studio Application
 Please try to run the application with administrative rights.
@@ -24,7 +46,7 @@ Please try to run the application with administrative rights.
 Please make sure that you have a correct and complete network configuration. If you use an isolated network, please enter a gateway IP on all of the Sensor nodes and Studio node (the gateway does not need to exist, but the address has to be configured). Please also make sure that you allow the Sensor and Studio applications in the Windows-internal and/or any third-party firewall applications.
 
 ## I have problems with poor tracking quality
-Before you start the registration process, it is crucial to select an appropriate sensor as main sensor (right click in the sensor list). The main sensor should have the biggest possible common space with all other sensors.
+Before you start the registration process, it is crucial to select an appropriate sensor as main sensor (right click in the sensor list). The main sensor should have the biggest possible common space with all other sensors. Besides this, there are still a lot of factors which influence tracking quality (registration quality, occlusions, "ghost" skeletons, network performance and much more). If you have a specific scenario which you would expect to work, but which does not work, please contact us (see above) or create an issue here at GitHub.
 
 ## I've encountered bugs or unexpected behaviour
 Please note that this software is still in an early stage of development. Nonetheless, if you want to support further development and help us to recognize and fix any bugs that may be included, please use the GitHub issue tracking system of this project to describe the issue you encountered. 
