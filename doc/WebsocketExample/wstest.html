@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+   <head>	  
+		<style>
+
+      .joint { 
+		background-color: red;
+		width:10px;
+		height:10px;
+	  }
+	  
+	  .marker {
+		background-color: blue;
+		width: 5px;
+		height: 5px;
+	  }
+
+		</style>
+   </head>
+   <body>      	  
+      <script type="text/javascript">
+         var ws;
+		 var freq = 30;
+		 
+		 function WebSocketTest()
+         {
+			alert("WSInit");
+            if ("WebSocket" in window)
+            {
+               // Let us open a web socket
+               ws = new WebSocket("ws://127.0.0.1:82");
+				
+               ws.onopen = function()
+               {                  
+				  setTimeout(requestMultiple, freq);
+               };
+				
+               ws.onmessage = function (evt) 
+               { 
+                  var received_msg = evt.data;
+				  var object = jQuery.parseJSON(received_msg);				  
+                  //console.log(object);
+				  if(object.Skeletons) renderSkeletons(object);
+				  else if(object.Markers) renderMarkers(object);
+				  else console.log(object);
+               };
+				
+               ws.onclose = function()
+               { 
+                  // websocket is closed.
+                  alert("Connection was closed..."); 
+               };
+            }
+            
+            else
+            {
+               // The browser doesn't support WebSocket
+               alert("WebSocket NOT supported by your Browser!");
+            }
+         }
+		 
+		 function requestMultiple() {
+			ws.send("s");
+			ws.send("m");
+			setTimeout(requestMultiple, freq);
+		 }
+		 
+		 function renderSkeletons(frame) {
+			//console.log(frame);
+			//clear
+			$("#skel").empty();
+			//frame skeletons
+			$.each(frame.Skeletons, function(key,value){
+				//skeleton joints
+				$.each(value.absoluteRawSkeleton, function(key2,value2){
+					//console.log(value2.position);
+					var topPos = (value2.position.Y*-1*(100*value2.position.Z)+500)*1;
+					var leftPos = value2.position.X*(100*value2.position.Z)+500;
+					var divToAdd = $('<div></div>').addClass("joint").css({top: topPos, left: leftPos, position:'absolute'});
+					$("#skel").append(divToAdd);
+				});
+			});
+		 }
+		 
+		 function renderMarkers(frame) {
+			//console.log(frame);
+			//clear
+			$("#mrk").empty();
+			//frame markers
+			$.each(frame.Markers, function(key,value){				
+				//console.log(value.Position);
+				var topPos = value.Position.Y*-100+500;
+				var leftPos = value.Position.X*100+500;
+				var divToAdd = $('<div></div>').addClass("marker").css({top: topPos, left: leftPos, position:'absolute'});
+				$("#mrk").append(divToAdd);
+			});
+		 }
+		 		 
+      </script>
+	  <script src="http://code.jquery.com/jquery-2.2.3.min.js" ></script>
+	  
+      <div id="sse">
+         <a href="javascript:WebSocketTest()">Run WebSocket</a>
+      </div>
+	  <div id="skel" style="width:1600px; height:1000px; position:absolute; top:30; left:0;">
+		
+	  </div> 
+	  <div id="mrk" style="width:1600px; height:1000px; position:absolute; top:30; left:0;">
+		
+	  </div> 	  
+   </body>
+</html>
