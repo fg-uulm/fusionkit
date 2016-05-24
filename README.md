@@ -6,8 +6,16 @@ For the time being, only binaries will be provided for download, as licensing is
 #License (for the provided binaries)
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. BINARIES OF THIS SOFTWARE MAY NOT BE REDISTRIBUTED COMMERCIALLY OR NON-COMMERCIALLY, NOR MADE AVAILABLE TO ANY THIRD PARTY THROUGH ANY OTHER MEANS BESIDES DIRECT DOWNLOADS FROM THIS WEB PAGE.
 
-#Contact
-See http://uulm.de/?fusionkit
+#Contact / Publications
+For contact details, see http://uulm.de/?fusionkit
+
+If you happen to use this software for any published research work, please cite our respective publications:
+- Michael Rietzler, Florian Geiselhart, Janek Thomas and Enrico Rukzio
+FusionKit: A Generic Toolkit for Skeleton, Marker and Rigid-Body Tracking
+Proc. of the 8th ACM SIGCHI Symposium on Engineering Interactive Computing Systems (EICS 16)
+- Florian Geiselhart, Michael Otto and Enrico Rukzio
+On the use of Multi-Depth-Camera based Motion Tracking Systems in Production Planning Environments
+In Proc. of CIRP CMS 2015 (48th CIRP Conference on Manufacturing Systems),
 
 #FAQ
 
